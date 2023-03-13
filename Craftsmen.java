@@ -1,6 +1,6 @@
 package OOP;
 
-public class Craftsmen extends BaseHero {
+public abstract class Craftsmen extends BaseHero {
 
     protected int stamina;
 

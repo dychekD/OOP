@@ -9,6 +9,11 @@ public class Monk extends Magicians {
         this.potions = 3;
     }
 
+    @Override
+    public String getInfo () {
+        return "Monk";
+    }
+
     // Action: can heal 
     
 }

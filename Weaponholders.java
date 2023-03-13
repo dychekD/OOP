@@ -1,6 +1,6 @@
 package OOP;
 
-public class Weaponholders extends BaseHero {
+public abstract class Weaponholders extends BaseHero {
 
     protected int sharpshooting;
 

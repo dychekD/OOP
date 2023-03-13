@@ -9,6 +9,11 @@ public class Crossbowman extends Weaponholders {
         this.bolts = 40;
     }
 
+    @Override
+    public String getInfo () {
+        return "Crossbowman";
+    }
+
     // Actions: can attack three heroes simultaniously
     
 }

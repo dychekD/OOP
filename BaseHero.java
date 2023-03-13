@@ -1,6 +1,6 @@
 package OOP;
 
-public class BaseHero {
+public abstract class BaseHero implements HeroInterface {
     protected String name;
     protected int health;
     protected int expirience;
@@ -13,6 +13,14 @@ public class BaseHero {
         this.expirience = expirience;
         this.level = level;
         this.gold = gold;
+    }
+
+    @Override
+    public void step (){};
+
+    @Override
+    public String getInfo () {
+        return "";
     }
 
     // Actions: attacks, gets damage, restores health, upgrades level, increase expirience, make purchases

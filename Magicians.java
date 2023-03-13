@@ -1,6 +1,6 @@
 package OOP;
 
-public class Magicians extends BaseHero {
+public abstract class Magicians extends BaseHero {
 
     protected int knowledge;
 
