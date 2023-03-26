@@ -2,15 +2,17 @@ package OOP;
 
 public class Wizard extends Magicians{
 
-    private int crystals; 
-
-    public Wizard() {
-        super("Merlin", 40, 0, 0, 10, 200);
-        this.crystals = 2;
+    public Wizard(String name) {
+        super(name, 30, 17, -5, 12, 9, 1);
     }
     @Override
     public String getInfo () {
         return "Wizard";
+    }
+
+    @Override
+    public String toString () {
+        return super.toString();
     }
 
     //Action: increases skills of other players

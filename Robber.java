@@ -1,16 +1,18 @@
 package OOP;
 
-public class Robber extends Craftsmen {
+public class Robber extends Weaponholders {
 
-    private int disguise;
-
-    public Robber() {
-        super("Robin", 78, 20, 1, 50, 70);
-        this.disguise = 1;
+    public Robber(String name) {
+        super(name, 10, 8, 4, 3, 6);
     }
     @Override
     public String getInfo () {
         return "Robber";
+    }
+
+    @Override
+    public String toString () {
+        return super.toString();
     }
     
     //Actions: steals gold, reduces damage of attacks 

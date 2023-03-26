@@ -2,15 +2,18 @@ package OOP;
 
 public class Spearman extends Weaponholders {
 
-    private int spears;
-
-    public Spearman() {
-        super("Achilles", 150, 0, 1, 6, 12);
-        this.spears = 1;
+    public Spearman(String name) {
+        super(name, 10, 4, 3, 5, 4);
     }
+
     @Override
     public String getInfo () {
         return "Spearman";
+    }
+    
+    @Override
+    public String toString () {
+        return super.toString();
     }
     
     // Action: can attack even without spears with reduced damage

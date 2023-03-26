@@ -1,27 +1,56 @@
 package OOP;
 
-public abstract class BaseHero implements HeroInterface {
-    protected String name;
-    protected int health;
-    protected int expirience;
-    protected int level;
-    protected int gold;
+import java.util.ArrayList;
+import java.util.Random;
 
-    public BaseHero (String name, int health, int expirience, int level, int gold) {
-        this.name = name;
+public abstract class BaseHero implements HeroInterface {
+    protected int health;
+    protected int attack;
+    protected int damage;
+    protected int defence;
+    protected int speed;
+    protected final String NAME;
+
+    public BaseHero (String name, int health, int attack, int damage, int defence, int speed) {
+        NAME = name;
         this.health = health;
-        this.expirience = expirience;
-        this.level = level;
-        this.gold = gold;
+        this.attack = attack;
+        this.damage = damage;
+        this.defence = defence;
+        this.speed = speed;
+    }
+
+    public int getSpeed () {
+        return speed;
+    }
+
+    public void getDamage (int damage) {
+        if (this.health - damage > 0) {
+            this.health -= damage;
+        }
+        else this.health = 0;
+    }
+
+    public void Attack (BaseHero hero) {
+        hero.getDamage(this.damage);        
     }
 
     @Override
-    public void step (){};
+    public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2){};
 
     @Override
     public String getInfo () {
         return "";
     }
 
+    @Override
+    public String toString () {
+        return String.format ("name: %s; health: %d; attack: %d; damage: %d; defence: %d; speed: %d", 
+        this.NAME, this.health, this.attack, this.damage, this.defence, this.speed);
+    }
+
+
+    
+    
     // Actions: attacks, gets damage, restores health, upgrades level, increase expirience, make purchases
 }

@@ -2,12 +2,16 @@ package OOP;
 
 public abstract class Weaponholders extends BaseHero {
 
-    protected int sharpshooting;
 
-    public Weaponholders(String name, int health, int expirience, int level, int gold, int sharpshooting) {
-        super(name, health, expirience, level, gold);
-        this.sharpshooting = sharpshooting;
+    public Weaponholders(String name, int health, int attack, int damage, int defence, int speed) {
+        super(name, health, attack, damage, defence, speed);
     }
+
+    @Override
+    public String toString () {
+        return super.toString();
+    }
+
 
     //Action: increases damage
     

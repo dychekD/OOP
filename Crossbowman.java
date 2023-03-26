@@ -1,17 +1,19 @@
 package OOP;
 
-public class Crossbowman extends Weaponholders {
+public class Crossbowman extends Shooter {
 
-    private int bolts;
-
-    public Crossbowman() {
-        super("Brian", 80, 30, 2, 18, 20);
-        this.bolts = 40;
+    public Crossbowman(String name) {
+        super(name, 10, 6, 3, 3, 4, 16);
     }
 
     @Override
     public String getInfo () {
         return "Crossbowman";
+    }
+
+    @Override
+    public String toString () {
+        return super.toString();
     }
 
     // Actions: can attack three heroes simultaniously

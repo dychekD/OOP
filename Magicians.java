@@ -2,12 +2,18 @@ package OOP;
 
 public abstract class Magicians extends BaseHero {
 
-    protected int knowledge;
+    protected int magic;
 
-    public Magicians(String name, int health, int expirience, int level, int gold, int knowledge) {
-        super(name, health, expirience, level, gold);
-        this.knowledge = knowledge;
+    public Magicians(String name, int health, int attack, int damage, int defence, int speed, int magic) {
+        super(name, health, attack, damage, defence, speed);
+        this.magic = magic;
     }
+
+    @Override
+    public String toString () {
+        return String.format ("%s magic: %d", super.toString(), this.magic);
+    }
+    
 
     // Actions: can attack multiple players 
     
