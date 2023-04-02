@@ -2,8 +2,8 @@ package OOP;
 
 public class Robber extends Weaponholders {
 
-    public Robber(String name) {
-        super(name, 10, 8, 4, 3, 6);
+    public Robber(String name, int x, int y) {
+        super(name, 10, 8, 4, 3, 6, x, y, 0);
     }
     @Override
     public String getInfo () {

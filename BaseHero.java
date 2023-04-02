@@ -1,7 +1,6 @@
 package OOP;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class BaseHero implements HeroInterface {
     protected int health;
@@ -10,14 +9,18 @@ public abstract class BaseHero implements HeroInterface {
     protected int defence;
     protected int speed;
     protected final String NAME;
+    protected Coordinates xy;
+    protected int delivery;
 
-    public BaseHero (String name, int health, int attack, int damage, int defence, int speed) {
+    public BaseHero (String name, int health, int attack, int damage, int defence, int speed, int x, int y, int delivery) {
         NAME = name;
         this.health = health;
         this.attack = attack;
         this.damage = damage;
         this.defence = defence;
         this.speed = speed;
+        this.xy = new Coordinates(x, y);
+        this.delivery = delivery;
     }
 
     public int getSpeed () {
@@ -34,6 +37,23 @@ public abstract class BaseHero implements HeroInterface {
     public void Attack (BaseHero hero) {
         hero.getDamage(this.damage);        
     }
+    public double Distance (BaseHero bh) {
+        return Math.sqrt(Math.pow (this.xy.x - bh.xy.x, 2) + Math.pow (this.xy.y - bh.xy.y, 2));
+    }
+
+    public int Target (ArrayList <BaseHero> enemies) {
+        double distance = 100;
+        double distanceTemp;
+        int target = 0;
+        for (BaseHero bh: enemies)  {
+            distanceTemp = Distance (bh);
+            if (distanceTemp < distance) {
+                distance = distanceTemp;
+                target = enemies.indexOf (bh);
+            }
+        }
+        return target;
+    }
 
     @Override
     public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2){};
@@ -45,8 +65,8 @@ public abstract class BaseHero implements HeroInterface {
 
     @Override
     public String toString () {
-        return String.format ("name: %s; health: %d; attack: %d; damage: %d; defence: %d; speed: %d", 
-        this.NAME, this.health, this.attack, this.damage, this.defence, this.speed);
+        return String.format ("name: %s; health: %d; attack: %d; damage: %d; defence: %d; speed: %d; coordinates: (%d, %d); delivery: %d", 
+        this.NAME, this.health, this.attack, this.damage, this.defence, this.speed, this.xy.x, this.xy.y, this.delivery);
     }
 
 

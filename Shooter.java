@@ -6,14 +6,14 @@ public abstract class Shooter extends BaseHero {
 
     protected int arrows;
 
-    public Shooter(String name, int health, int attack, int damage, int defence, int speed, int arrows) {
-        super(name, health, attack, damage, defence, speed);
+    public Shooter(String name, int health, int attack, int damage, int defence, int speed, int x, int y, int delivery, int arrows) {
+        super(name, health, attack, damage, defence, speed, x, y, delivery);
         this.arrows = arrows;
     }
 
     @Override
     public String toString () {
-        return String.format ("%s arrows: %d", super.toString(), this.arrows);
+        return String.format ("%s; arrows: %d", super.toString(), this.arrows);
     }
 
     @Override
@@ -21,16 +21,16 @@ public abstract class Shooter extends BaseHero {
         if (this.health == 0 && this.arrows == 0) System.out.println("Cannot shoot");
         else {
             System.out.println("Can shoot");
-            for (BaseHero hero: team2) {
-                if (hero.health > 0) {
-                    super.Attack (hero);
-                    this.arrows --;
-                    for (BaseHero friend : team1) {
-                        if (friend.getInfo() == "Peasant") {
-                            this.arrows ++;
-                            break;
+            int target = super.Target(team2);
+            if (team2.get(target).health > 0) {
+                super.Attack (team2.get(target));
+                this.arrows --;
+                for (BaseHero friend : team1) {
+                    if (friend.getInfo() == "Peasant" && friend.delivery >0) {
+                        this.arrows ++;
+                        friend.delivery = 0;
+                        break;
                         }
-                        
                     }
                 }
             }
@@ -41,4 +41,4 @@ public abstract class Shooter extends BaseHero {
     
     // Actions: travel to nearest town
     
-}
+

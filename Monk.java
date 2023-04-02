@@ -3,8 +3,8 @@ package OOP;
 public class Monk extends Magicians {
 
     
-    public Monk(String name) {
-        super(name, 30, 12, -4, 7, 5, 1);
+    public Monk(String name, int x, int y) {
+        super(name, 30, 12, -4, 7, 5, x, y, 0, 1);
     }
 
     @Override

@@ -6,13 +6,13 @@ import java.util.Random;
 public class Program {
     public static void main(String[] args) {
 
-        ArrayList <BaseHero> list1 = new ArrayList<>();
-        ArrayList <BaseHero> list2 = new ArrayList<>();
-        list1 = listOne (list1);
-        list2 = listTwo (list2);
+        ArrayList <BaseHero> friends = new ArrayList<>();
+        ArrayList <BaseHero> enemies = new ArrayList<>();
+        friends = listOne (friends);
+        enemies = listTwo (enemies);
         ArrayList <BaseHero> listAll = new ArrayList<>();
-        listAll.addAll (list1);
-        listAll.addAll (list2);
+        listAll.addAll (friends);
+        listAll.addAll (enemies);
 
         listAll.sort(new Comparator <BaseHero> () {
             @Override
@@ -24,11 +24,14 @@ public class Program {
         }
         );
     
-        list1.forEach(u -> System.out.println(u.getInfo() + ": "+ u.toString()));
+        friends.forEach(u -> System.out.println(u.getInfo() + ": "+ u.toString()));
         System.out.println();
-        list2.forEach(u -> System.out.println(u.getInfo() + ": "+ u.toString()));
+        enemies.forEach(u -> System.out.println(u.getInfo() + ": "+ u.toString()));
         System.out.println();
         System.out.println("sorted by speed");
+        listAll.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
+        System.out.println("First step");
+        listAll.forEach(u -> u.step(friends, enemies));
         listAll.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
     }
 
@@ -36,16 +39,16 @@ public class Program {
         for (int i = 0; i < 10; i++) {
             switch (new Random().nextInt (4)) {
                 case 0: 
-                    empty.add (new Peasant (getName()));
+                    empty.add (new Peasant (getName(), 0, i));
                     break;
                 case 1: 
-                    empty.add (new Robber (getName()));
+                    empty.add (new Robber (getName(), 0, i));
                     break;
                 case 2: 
-                    empty.add (new Sniper (getName()));
+                    empty.add (new Sniper (getName(), 0, i));
                     break;
                 default: 
-                    empty.add (new Wizard (getName()));
+                    empty.add (new Wizard (getName(), 0, i));
                     break;
                 }
         }
@@ -56,16 +59,16 @@ public class Program {
         for (int i = 0; i < 10; i++) {
             switch (new Random().nextInt (4)) {
                 case 0: 
-                    empty.add (new Peasant (getName()));
+                    empty.add (new Peasant (getName(), 9, i));
                     break;
                 case 1: 
-                    empty.add (new Spearman (getName()));
+                    empty.add (new Spearman (getName(), 9, i));
                     break;
                 case 2: 
-                    empty.add (new Crossbowman (getName()));
+                    empty.add (new Crossbowman (getName(), 9, i));
                     break;
                 default: 
-                    empty.add (new Monk (getName()));
+                    empty.add (new Monk (getName(), 9, i));
                     break;
                 }
         }
