@@ -31,8 +31,16 @@ public class Program {
         System.out.println("sorted by speed");
         listAll.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
         System.out.println("First step");
-        listAll.forEach(u -> u.step(friends, enemies));
-        listAll.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
+        for (BaseHero friend: friends) {
+            friend.step(friends, enemies);
+        }
+        for (BaseHero enemy: enemies) {
+            enemy.step(enemies, friends);
+        }
+        friends.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
+        System.out.println("");
+        enemies.forEach(u -> System.out.println(u.getInfo() + ": " +u.toString()));
+
     }
 
     public static ArrayList <BaseHero> listOne (ArrayList<BaseHero> empty){
