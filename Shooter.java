@@ -15,27 +15,31 @@ public abstract class Shooter extends BaseHero {
     public String toString () {
         return String.format ("%s; arrows: %d", super.toString(), this.arrows);
     }
+    @Override
+    public String getInfo (){
+        String outStr = String.format("\t%-3s\tattack: %-3d\tdefence: %-3d\thealth: %-3d\tdamage: %-3d\tarrows: %-3d\t ", getName(), attack, defence,health,damage,arrows);
+        return outStr;
+    }
 
     @Override
     public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2) {
-        if (this.health == 0 && this.arrows == 0) System.out.println("Cannot shoot");
-        else {
-            System.out.println("Can shoot");
+        if (this.health > 0 && this.arrows > 0){
             int target = super.Target(team2);
             if (team2.get(target).health > 0) {
                 super.Attack (team2.get(target));
                 this.arrows --;
                 for (BaseHero friend : team1) {
-                    if (friend.getInfo() == "Peasant" && friend.delivery >0) {
+                    if (friend.getName() == "Peasant" && friend.delivery >0) {
                         this.arrows ++;
                         friend.delivery = 0;
                         break;
                         }
-                    }
                 }
             }
         }
     }
+}
+    
 
     
     

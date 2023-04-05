@@ -8,7 +8,7 @@ public class Monk extends Magicians {
     }
 
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Monk";
     }
 

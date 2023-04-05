@@ -7,7 +7,7 @@ public class Spearman extends Weaponholders {
     }
 
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Spearman";
     }
     

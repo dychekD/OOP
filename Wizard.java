@@ -6,7 +6,7 @@ public class Wizard extends Magicians{
         super(name, 30, 17, -5, 12, 9, x, y, 0, 1);
     }
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Wizard";
     }
 

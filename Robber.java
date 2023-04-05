@@ -6,7 +6,7 @@ public class Robber extends Weaponholders {
         super(name, 10, 8, 4, 3, 6, x, y, 0);
     }
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Robber";
     }
 

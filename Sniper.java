@@ -7,7 +7,7 @@ public class Sniper extends Shooter{
     }
 
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Sniper";
     }
 

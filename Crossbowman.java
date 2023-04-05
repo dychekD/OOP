@@ -7,7 +7,7 @@ public class Crossbowman extends Shooter {
     }
 
     @Override
-    public String getInfo () {
+    public String getName () {
         return "Crossbowman";
     }
 

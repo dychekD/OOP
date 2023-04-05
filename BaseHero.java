@@ -11,10 +11,12 @@ public abstract class BaseHero implements HeroInterface {
     protected final String NAME;
     protected Coordinates xy;
     protected int delivery;
+    protected int maxHealth;
 
     public BaseHero (String name, int health, int attack, int damage, int defence, int speed, int x, int y, int delivery) {
         NAME = name;
         this.health = health;
+        this.maxHealth = health;
         this.attack = attack;
         this.damage = damage;
         this.defence = defence;
@@ -55,11 +57,15 @@ public abstract class BaseHero implements HeroInterface {
         return target;
     }
 
+    public Coordinates getPosition () {
+        return xy;
+    }
+
     @Override
     public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2){};
 
     @Override
-    public String getInfo () {
+    public String getName () {
         return "";
     }
 
@@ -67,6 +73,12 @@ public abstract class BaseHero implements HeroInterface {
     public String toString () {
         return String.format ("name: %s; health: %d; attack: %d; damage: %d; defence: %d; speed: %d; coordinates: (%d, %d); delivery: %d", 
         this.NAME, this.health, this.attack, this.damage, this.defence, this.speed, this.xy.x, this.xy.y, this.delivery);
+    }
+
+    @Override
+    public String getInfo (){
+        String outStr = String.format("\t%-3s\tattack: %-3d\tdefence: %-3d\thealth: %-3d\tdamage: %-3d\t ", getName(), attack, defence,health,damage);
+        return outStr;
     }
 
 
