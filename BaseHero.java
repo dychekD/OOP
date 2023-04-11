@@ -49,7 +49,7 @@ public abstract class BaseHero implements HeroInterface {
         int target = 0;
         for (BaseHero bh: enemies)  {
             distanceTemp = Distance (bh);
-            if (distanceTemp < distance) {
+            if (distanceTemp < distance && bh.health > 0) {
                 distance = distanceTemp;
                 target = enemies.indexOf (bh);
             }
@@ -60,6 +60,20 @@ public abstract class BaseHero implements HeroInterface {
     public Coordinates getPosition () {
         return xy;
     }
+
+    public void Direction (Coordinates target) {
+        int dx = Math.abs(this.xy.x - target.x);
+        int dy = Math.abs (this.xy.y - target.y);
+        if (dx > dy) {
+            if (this.xy.x > target.x) this.xy.x -=1;
+            else this.xy.x +=1;
+        }
+        else {
+            if (this.xy.y > target.y) this.xy.y -=1;
+            else this.xy.y +=1;
+        }
+    }
+    
 
     @Override
     public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2){};

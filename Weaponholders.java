@@ -1,5 +1,7 @@
 package OOP;
 
+import java.util.ArrayList;
+
 public abstract class Weaponholders extends BaseHero {
 
 
@@ -10,6 +12,22 @@ public abstract class Weaponholders extends BaseHero {
     @Override
     public String toString () {
         return super.toString();
+    }
+
+    @Override
+    public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2) {
+        if (this.health > 0){
+            int target = super.Target(team2);
+            if (team2.get(target).health > 0 && super.Distance (team2.get(target)) <= 2) {
+                super.Attack(team2.get(target));
+            }
+            else if (team2.get(target).health > 0) {
+                super.Direction (team2.get(target).xy);
+
+
+            }
+        }
+
     }
 
 
