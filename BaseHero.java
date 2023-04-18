@@ -61,16 +61,48 @@ public abstract class BaseHero implements HeroInterface {
         return xy;
     }
 
-    public void Direction (Coordinates target) {
+    public int [] Obstacles (ArrayList <BaseHero> team1) {
+        int [] temp = new int [4];
+        for (BaseHero hr : team1) {
+            if (hr.health > 0 && hr.xy.x + 1 == this.xy.x && hr.xy.y == this.xy.y) temp [0] = 1;
+            if (hr.health > 0 && hr.xy.x == this.xy.x && hr.xy.y + 1 == this.xy.y) temp [1] = 1;
+            if (hr.health > 0 && hr.xy.x == this.xy.x && hr.xy.y - 1 == this.xy.y) temp [2] = 1;
+            if (hr.health > 0 && hr.xy.x - 1 == this.xy.x && hr.xy.y == this.xy.y) temp [3] = 1;
+        } 
+        return temp;
+    }
+
+    public void Direction (Coordinates target, ArrayList <BaseHero> team1) {
         int dx = Math.abs(this.xy.x - target.x);
         int dy = Math.abs (this.xy.y - target.y);
+        int [] temp = Obstacles(team1);
         if (dx > dy) {
-            if (this.xy.x > target.x) this.xy.x -=1;
-            else this.xy.x +=1;
+            if (this.xy.x > target.x) {
+                if (temp [0] == 0) this.xy.x -=1;
+                else if (temp [1] == 0) this.xy.y -=1;
+                else if (temp [2] == 0) this.xy.y += 1;
+                else this.xy.x = this.xy.x +0;
+            }
+            else  if (this.xy.x < target.x) {
+                if (temp [3] == 0) this.xy.x +=1;
+                else if (temp [1] == 0) this.xy.y -=1;
+                else if (temp [2] == 0) this.xy.y += 1;
+                else this.xy.x = this.xy.x +0;
+            }
         }
         else {
-            if (this.xy.y > target.y) this.xy.y -=1;
-            else this.xy.y +=1;
+            if (this.xy.y > target.y) {
+                if (temp [1] == 0) this.xy.y -=1;
+                else if (temp [0] == 0) this.xy.x -=1;
+                else if (temp [3] == 0) this.xy.x +=1;
+                else this.xy.y = this.xy.y +0;
+            }
+            else if (this.xy.y < target.y) {
+                if (temp [2] == 0) this.xy.y +=1;
+                else if (temp [0] == 0) this.xy.x -=1;
+                else if (temp [3] == 0) this.xy.x +=1;
+                else this.xy.y = this.xy.y +0;
+            }
         }
     }
     

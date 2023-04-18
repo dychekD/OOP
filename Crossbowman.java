@@ -3,7 +3,7 @@ package OOP;
 public class Crossbowman extends Shooter {
 
     public Crossbowman(String name, int x, int y) {
-        super(name, 10, 6, 3, 3, 4, x, y, 0, 16);
+        super(name, 10, 6, 1, 3, 9, x, y, 0, 7);
     }
 
     @Override

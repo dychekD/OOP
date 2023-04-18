@@ -3,7 +3,7 @@ package OOP;
 public class Sniper extends Shooter{
 
     public Sniper(String name, int x, int y) {
-        super(name, 15, 12, 1, 10, 9, x, y, 0, 32);
+        super(name, 15, 12, 2, 10, 7, x, y, 0, 4);
     }
 
     @Override

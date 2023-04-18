@@ -18,12 +18,11 @@ public abstract class Weaponholders extends BaseHero {
     public void step (ArrayList <BaseHero> team1, ArrayList <BaseHero> team2) {
         if (this.health > 0){
             int target = super.Target(team2);
-            if (team2.get(target).health > 0 && super.Distance (team2.get(target)) <= 2) {
+            if (team2.get(target).health > 0 && super.Distance (team2.get(target)) < 2) {
                 super.Attack(team2.get(target));
             }
             else if (team2.get(target).health > 0) {
-                super.Direction (team2.get(target).xy);
-
+                super.Direction (team2.get(target).xy, team1);
 
             }
         }
